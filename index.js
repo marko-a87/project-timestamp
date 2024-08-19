@@ -2,7 +2,7 @@
 // where your node app starts
 
 // init project
-var express = require("express");
+import express from "express";
 var app = express();
 
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
@@ -22,6 +22,9 @@ app.get("/", function (req, res) {
 app.get("/api/hello", function (req, res) {
   res.json({ greeting: "hello API" });
 });
+const isvalidDate = (date) => {
+  return !isNaN(new Date(date));
+};
 
 app.use("/api/:date?", (req, res) => {
   const date = new Date(req.params.date);
